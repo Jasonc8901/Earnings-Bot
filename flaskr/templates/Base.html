@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Earnings Bot</title>
+    <script>
+        function updateWindowLocation(loc, new_tab) {
+            if (new_tab) {
+                window.open(loc, '_blank').focus();
+            } else {
+                window.location.href = loc;
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            position: relative;
+        }
+        .banner {
+            width: 100%;
+            height: 28rem;
+            margin-top: -6rem;
+        }
+        .main-header {
+            position: absolute;
+            color: white;
+            font-family: sans-serif;
+            margin: 2rem;
+            font-size: 3rem;
+        }
+        .banner-container {
+            height: 17rem;
+            overflow: hidden;
+        }
+        .banner-button {
+            background: deepskyblue;
+            width: 100%;
+            text-align: right;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            line-height: 3rem;
+            border: 0;
+            cursor: pointer;
+            padding-right: 1rem;
+        }
+        .banner-button:hover {
+            background: dodgerblue;
+        }
+        .nav-sidebar {
+            background: deepskyblue;
+            max-width: 17rem;
+        }
+        .footer {
+            width: 100%;
+            background-color: dodgerblue;
+            height: 20%;
+            bottom: 0;
+            position: relative;
+            text-align: center;
+            padding-top: 2rem;
+        }
+        .footer-logo {
+            margin: 2rem;
+            cursor: pointer;
+        }
+        .flex-container {
+            display: flex;
+            height: 100%;
+        }
+        .flex-child {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="main-header">Earnings Bot Home</h3>
+    <div class="banner-container">
+        <img alt="Banner image missing" class="banner" src="../static/banner.png">
+    </div>
+    <div class="flex-container">
+        <div class="nav-sidebar flex-child">
+            <button class="banner-button" onclick="updateWindowLocation('/')" rel="noopener">
+                Home
+            </button>
+            <button class="banner-button" onclick="updateWindowLocation('/earnings/')" rel="noopener">
+                Upcoming Earnings
+            </button>
+            <button class="banner-button" onclick="updateWindowLocation('/earnings/search/')" rel="noopener">
+                Earnings Lookup
+            </button>
+            <button class="banner-button" onclick="updateWindowLocation('/contact/')" rel="noopener">
+                Dev Contact Info
+            </button>
+        </div>
+        <div class="flex-child" style="padding: 3rem">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+        <img
+          class="footer-logo"
+          onclick="updateWindowLocation('https://github.com/Jasonc8901', true)"
+          alt="github-icon"
+          src="../static/github.png"
+          rel="noreferrer noopener"
+        >
+        <img
+          class="footer-logo"
+          onclick="updateWindowLocation('https://www.linkedin.com/in/jason-cole-21186318a/', true)"
+          style="height:4rem;"
+          alt="linkedin-icon"
+          src="../static/LinkedIn.png"
+          rel="noreferrer noopener"
+        >
+    </div>
+</body>
+</html>
