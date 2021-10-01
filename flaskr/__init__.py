@@ -1,20 +1,22 @@
 import os
 import requests
-from flask import Flask
-
-from flaskr import db
-
+from flask import Flask, render_template
+import db
+from views import earnings_bp
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_mapping(
     SECRET_KEY='dev',
     DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+    DEBUG=True,
 )
+db.init_app(app)
+app.register_blueprint(earnings_bp)
 
 
 @app.route('/')
 def index():
-    return 'Home route.'
+    return render_template('Home.html')
 
 
 @app.route('/hello/')
@@ -32,8 +34,6 @@ def scraper_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    db.init_app(app)
 
     return app
 
